@@ -1,0 +1,17 @@
+{
+    "name": "evywell/g4p1",
+    "authors": [
+        {
+            "name": "Evywell",
+            "email": "leduc.axel.pro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Controller\\": "controller/",
+          "Model\\": "model/",
+          "View\\": "view/"
+        }
+    },
+    "require": {}
+}
