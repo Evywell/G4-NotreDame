@@ -16,6 +16,14 @@ abstract class Controller
         $this->modelPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "model" . DIRECTORY_SEPARATOR;
     }
 
+    /**
+     * Charge une vue. Si le dernier paramètre vaut true, il retournera le résultat de la vue mais ne l'affichera pas
+     *
+     * @param $view
+     * @param array $globals
+     * @param bool $return_view
+     * @return string
+     */
     protected function loadView($view, $globals = [], $return_view = false)
     {
         extract($globals);
@@ -28,6 +36,12 @@ abstract class Controller
         echo $content;
     }
 
+    /**
+     * Charge un model
+     *
+     * @param $model_name
+     * @return bool
+     */
     protected function loadModel($model_name)
     {
         $model_name = ucfirst($model_name);

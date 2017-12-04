@@ -11,8 +11,12 @@ spl_autoload_register(function ($class) {
 // Composer autoloader
 //require dirname(__DIR__) . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
 
+// Récupère le paramètre de route
 $uri = isset($_GET['r']) ? $_GET['r'] : '/';
+// Inclut les routes
 $routes = require dirname(__DIR__) . DIRECTORY_SEPARATOR . "routes.php";
+
+// On parcours les routes. Si on en trouve une, on appelle l'action associée.
 ob_start();
 foreach ($routes as $route => $value) {
     if (preg_match("#$route#", $uri, $matches)) {
@@ -24,4 +28,5 @@ foreach ($routes as $route => $value) {
 }
 $content = ob_get_clean();
 
+// On affiche le contenu retournée par l'action
 echo $content;
