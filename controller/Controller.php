@@ -16,10 +16,16 @@ abstract class Controller
         $this->modelPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "model" . DIRECTORY_SEPARATOR;
     }
 
-    protected function loadView($view, $globals = [])
+    protected function loadView($view, $globals = [], $return_view = false)
     {
         extract($globals);
+        ob_start();
         require_once $this->viewPath . $view . ".php";
+        $content = ob_get_clean();
+        if ($return_view) {
+            return $content;
+        }
+        echo $content;
     }
 
     protected function loadModel($model_name)
