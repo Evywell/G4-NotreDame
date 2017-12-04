@@ -1,0 +1,267 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.header {
+    position: relative;
+    width: 1200px;
+    height: 690px;
+    margin: 0 auto;
+}
+
+.header .header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: -1;
+}
+
+.header .header-background img {
+    width: 100%;
+    height: auto;
+}
+
+.header .nav ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header .nav.fixed {
+    position: fixed;
+    left: 0; right: 0;
+    background: #333353;
+    animation: toTop 0.3s;
+}
+
+.header .nav ul li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+
+.header .nav ul li a {
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 50px 20px 16px 20px;
+    color: #FFF;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.header .nav ul li a:hover {
+    color: #31271c;
+}
+
+.header .nav ul li a::before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    bottom: 0;
+    transform: skewX(-10deg);
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -ms-transition: background 0.3s;
+    -o-transition: background 0.3s;
+    transition: background 0.3s;
+}
+
+.header .nav ul li a:hover::before {
+    background: #00ff9c;
+}
+
+.header .logo {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: url("../img/logo2.png") no-repeat;
+    background-size: contain;
+    width: 250px;
+    height: 230px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #666686;
+    margin: 70px 0;
+    font-family: serif;
+}
+
+h1 b {
+    color: #00ffb5;
+}
+
+.container p {
+    line-height: 1.5em;
+}
+
+.container p.dark {
+    color: #666686;
+}
+
+p.author {
+    color: #b8b8cb;
+    font-size: 0.9em;
+    margin-top: 50px;
+}
+
+p.author::before {
+    content: '-';
+    padding-right: 5px;
+}
+
+.transition {
+    display: flex;
+    background: url("../img/a.png") no-repeat center;
+    height: 800px;
+    margin: 50px 0;
+    color: #FFF;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.transition h2 {
+    text-align: center;
+}
+
+.transition .container {
+    width: 1200px;
+}
+
+.transition .container .left {
+    width: 500px;
+}
+
+button {
+    font-family: serif;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #4d4d6e;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+}
+
+button.primary {
+    background-color: #00ffb5;
+    color: #FFF;
+}
+
+.container.center {
+    text-align: center;
+    color: #5e5e7f;
+}
+
+.flex {
+    display: flex;
+}
+
+.container .column {
+    flex: 1;
+    padding: 20px;
+}
+
+.container .column p {
+    text-align: left;
+}
+
+.reservation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 140px;
+    background: #00ffb5;
+    color: #333353;
+}
+
+.reservation p {
+    font-size: 1.5rem;
+    font-family: serif;
+    font-weight: 600;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    color: #525273;
+}
+
+.footer ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer .plan_site {
+    background: #333353;
+    padding: 20px 0;
+}
+
+.footer .plan_site .logo {
+    background: url("../img/logo.png") no-repeat;
+    width: 393px;
+    height: 205px;
+    margin: 30px auto;
+}
+
+.footer .plan_site .container {
+    display: flex;
+}
+
+.footer .plan_site .container .column {
+    flex: 1;
+}
+
+.footer .plan_site .container .column span {
+    color: #00ffb5;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.footer .plan_site .container .column li {
+    padding: 15px 0;
+}
+
+.footer .plan_site .container .column li a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.footer .plan_site .container .column li a:hover {
+    color: #00ff9c;
+}
+
+.footer .copyright {
+    display: flex;
+    align-items: center;
+    height: 160px;
+    background: #2c2c4b;
+    text-align: left;
+}
+
+@keyframes toTop {
+    from { transform: translateY(-100%) }
+    top { transform: translateY(0) }
+}
