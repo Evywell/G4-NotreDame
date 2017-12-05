@@ -321,6 +321,15 @@ button.primary {
     margin: 30px 0;
 }
 
+.error-list {
+    background: #ff0000a8;
+    color: #FFF;
+}
+
+.error-list li {
+    padding: 5px 0;
+}
+
 @keyframes toTop {
     from { transform: translateY(-100%) }
     top { transform: translateY(0) }

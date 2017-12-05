@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Autoload
 spl_autoload_register(function ($class) {
     $split = explode('\\', $class);
@@ -8,18 +9,26 @@ spl_autoload_register(function ($class) {
     require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . $file;
 });
 
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "utils.php";
+
 // Composer autoloader
 //require dirname(__DIR__) . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
-
-// Récupère le paramètre de route
-$uri = isset($_GET['r']) ? $_GET['r'] : '/';
+/**
+ * Routing
+ */
+$uri = '/';
+if (!isset($_GET['r'])) {
+    $uri = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+} else {
+    $uri = $_GET['r'];
+}
 // Inclut les routes
 $routes = require dirname(__DIR__) . DIRECTORY_SEPARATOR . "routes.php";
 
 // On parcours les routes. Si on en trouve une, on appelle l'action associée.
 ob_start();
 foreach ($routes as $route => $value) {
-    if (preg_match("#$route#", $uri, $matches)) {
+    if (preg_match("#^$route$#", $uri, $matches)) {
         array_shift($matches);
         $controller = new $value[0]();
         $action = $value[1];

@@ -4,16 +4,20 @@
 namespace Controller;
 
 
+use App\Connection;
+
 abstract class Controller
 {
 
     protected $viewPath;
     protected $modelPath;
+    private $connection;
 
     public function __construct()
     {
         $this->viewPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "view" . DIRECTORY_SEPARATOR;
         $this->modelPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "model" . DIRECTORY_SEPARATOR;
+        $this->connection = new Connection();
     }
 
     /**
@@ -47,7 +51,7 @@ abstract class Controller
         $model_name = ucfirst($model_name);
         $class = "Model\\" . $model_name;
         if (class_exists($class)) {
-            $this->$model_name = new $class();
+            $this->$model_name = new $class($this->connection);
         }
         return false;
     }
