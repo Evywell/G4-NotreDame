@@ -26,7 +26,23 @@ body {
     height: auto;
 }
 
+.header .nav {
+    display: flex;
+}
+
+.header .nav .header-logo {
+    display: none;
+    position: relative;
+    background: url('../img/icon-logo.png') no-repeat;
+    background-size: contain;
+    width: 72px;
+    height: 72px;
+    top: 15px;
+    left: 15px;
+}
+
 .header .nav ul {
+    position: relative;
     text-align: center;
     list-style-type: none;
     margin: 0 auto;
@@ -38,6 +54,14 @@ body {
     left: 0; right: 0;
     background: #333353;
     animation: toTop 0.3s;
+}
+
+.header .nav.fixed ul {
+    left: -38px;
+}
+
+.header .nav.fixed .header-logo {
+    display: inline-block;
 }
 
 .header .nav ul li {
@@ -295,6 +319,15 @@ button.primary {
 
 .infos_pratiques h1 {
     margin: 30px 0;
+}
+
+.error-list {
+    background: #ff0000a8;
+    color: #FFF;
+}
+
+.error-list li {
+    padding: 5px 0;
 }
 
 @keyframes toTop {
