@@ -301,3 +301,18 @@ button.primary {
     from { transform: translateY(-100%) }
     top { transform: translateY(0) }
 }
+
+.image
+{
+    width: 300px;
+    height:auto;
+    border: 8px solid #00ff9c;
+    border-radius:10px;
+    margin: 8px;
+}
+.titre_centre
+{
+    display: block;
+    text-align: center;
+    font-size: 5em;
+}
