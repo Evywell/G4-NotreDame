@@ -8,3 +8,6 @@
 > php -S localhost:8080 -t ./public
 
 Il est important d'avoir le point d'entrée de l'application configuré sur le dossier *public* 
+L'administration du site se trouve à l'adresse */admin*
+
+Les identifiants de connexion sont: admin / admin
