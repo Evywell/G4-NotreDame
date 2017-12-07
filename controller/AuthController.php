@@ -17,8 +17,9 @@ class AuthController extends Controller
                 die();
             }
         }
-        $content_for_layout = $this->loadView('auth/index', compact('errors'), true);
-        $this->loadView('layout/default', compact('content_for_layout'));
+        $this->data['errors'] = $errors;
+        $this->data['content_for_layout'] = $this->loadView('auth/index', $this->data, true);
+        $this->loadView('layout/default', $this->data);
     }
 
     private function envoieFormulaire()

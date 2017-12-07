@@ -22,9 +22,9 @@ class AdminController extends Controller
     public function index()
     {
         $this->loadModel('message');
-        $messages = $this->Message->getMessages();
-        $content_for_layout = $this->loadView('admin/message', compact("messages"), true);
-        $this->loadView('layout/default', compact('content_for_layout'));
+        $this->data['messages'] = $this->Message->getMessages();
+        $this->data['content_for_layout'] = $this->loadView('admin/message', $this->data, true);
+        $this->loadView('layout/default', $this->data);
     }
 
 }

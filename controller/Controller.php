@@ -12,12 +12,16 @@ abstract class Controller
     protected $viewPath;
     protected $modelPath;
     private $connection;
+    protected $data = [];
 
     public function __construct()
     {
         $this->viewPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "view" . DIRECTORY_SEPARATOR;
         $this->modelPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "model" . DIRECTORY_SEPARATOR;
         $this->connection = new Connection();
+        // Trails
+        $this->loadModel('Trails');
+        $this->data['trails_menu'] = $this->Trails->getTrails();
     }
 
     /**

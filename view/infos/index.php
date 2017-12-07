@@ -1,19 +1,6 @@
 <div class="flex infos_pratiques">
     <div class="column">
-        <h1>Informations pratiques</h1>
-        <h2>Horaires d'ouverture</h2>
-        <p>
-            <b>Du mardi au vendredi</b> : de <span>10h à 12h</span> et de 14h30 à 19h<br />
-            <b>Le samedi</b> : de <span>10h à 12h</span> et de <span>14h30 à 18h</span>
-        </p>
-        <h2>Coordonnées</h2>
-        <p>
-            <b>48 rue Cochon-Duvivier - 17300 Rochefort</b><br />
-            Téléphone : <span>01.23.45.67.89</span>
-        </p>
-        <p>
-            Mail: <b><a href="mailto:test@test.fr" class="infos_pratiques__contact">nous contacter</a></b>
-        </p>
+        <?= LOCALE === 'fr' ? $content->content : $content->en_content ?>
     </div>
     <div class="column">
         <?php if($errors): ?>
@@ -28,22 +15,25 @@
         <?php endif; ?>
         <form class="form" method="POST">
             <div class="form-full">
-                <label>Nom</label>
+                <label><?= NOM ?></label>
                 <input type="text" name="nom" value="<?= fill('nom') ?>">
             </div>
             <div class="form-full">
-                <label>Prénom</label>
+                <label><?= PRENOM ?></label>
                 <input type="text" name="prenom" value="<?= fill('prenom') ?>">
             </div>
             <div class="form-full">
-                <label>Adresse E-mail</label>
+                <label><?= EMAIL ?></label>
                 <input type="text" name="email" value="<?= fill('email') ?>">
             </div>
             <div class="form-full">
-                <label>Message</label>
+                <label><?= MESSAGE ?></label>
                 <textarea name="message" cols="30" rows="10"><?= fill('message') ?></textarea>
             </div>
-            <button class="primary">Envoyer</button>
+            <button class="primary"><?= ENVOYER ?></button>
         </form>
     </div>
 </div>
+<p>
+    <img class="image" style="width: 100%" src="<?= url('/img/carte.png') ?>" alt="">
+</p>

@@ -10,6 +10,13 @@ spl_autoload_register(function ($class) {
 });
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "utils.php";
+// Gestion des langues
+if (isset($_GET['lang']) && $_GET['lang'] === 'fr') {
+    $_SESSION['lang'] = 'fr';
+} else if (isset($_GET['lang']) && $_GET['lang'] === 'en') {
+    $_SESSION['lang'] = 'en';
+}
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "locales.php";
 
 // Composer autoloader
 //require dirname(__DIR__) . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
@@ -18,7 +25,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "utils.php";
  */
 $uri = '/';
 if (!isset($_GET['r'])) {
-    $uri = !empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+    $uri = !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
 } else {
     $uri = $_GET['r'];
 }

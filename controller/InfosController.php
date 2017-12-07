@@ -12,13 +12,17 @@ class InfosController extends Controller
         $errors = $success = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->envoieFormulaire();
+            if ($errors === null) {
+                $_POST = [];
+                $success = "Message envoyé avec succès";
+            }
         }
-        if ($errors === null) {
-            $_POST = [];
-            $success = "Message envoyé avec succès";
-        }
-        $content_for_layout = $this->loadView('infos/index', ['errors' => $errors, 'success' => $success], true);
-        $this->loadView('layout/default', compact('content_for_layout'));
+        $this->data['errors'] = $errors;
+        $this->data['success'] = $success;
+        $this->loadModel('infos');
+        $this->data['content'] = $this->Infos->getInformations();
+        $this->data['content_for_layout'] = $this->loadView('infos/index', $this->data, true);
+        $this->loadView('layout/default', $this->data);
     }
 
     private function envoieFormulaire()

@@ -7,7 +7,8 @@
 return [
     '/login' => [\Controller\AuthController::class, 'index'],
     '/admin' => [\Controller\AdminController::class, 'index'],
-    '/view/([0-9]+)' => [\Controller\HomeController::class, 'index'],
+    '/parcours/([a-z]+)' => [\Controller\TrailsController::class, 'show'],
+    '/parcours' => [\Controller\TrailsController::class, 'index'],
     '/galerie' => [\Controller\GalleryController::class, 'index'],
     '/informations-pratiques' => [\Controller\InfosController::class, 'index'],
     '/' => [\Controller\HomeController::class, 'index'],
